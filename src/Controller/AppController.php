@@ -57,7 +57,6 @@ class AppController extends Controller
                                 'password' => 'password'
                             ]
                     ]
-                ],
             ],
             'loginAction' => [
                 'controller' => 'Users',
