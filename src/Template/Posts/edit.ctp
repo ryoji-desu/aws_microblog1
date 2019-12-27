@@ -8,6 +8,6 @@ $this->assign('title', 'Edit Post') ;
 
 <?= $this->Form->create($post); ?>
 <div class="form-group">
-<?= $this->Form->input('content',['rows'=>'5','class'=>"form-control"]); ?>
+<?= $this->Form->control('content',['rows'=>'5','class'=>"form-control"]); ?>
 <?= $this->Form->button('Update',["class"=>"btn btn-primary"]); ?>
 <?= $this->Form->end(); ?>

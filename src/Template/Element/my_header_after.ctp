@@ -11,7 +11,7 @@
               <div class="form-row">
                   <?= $this->Form->create('User',['url' => ['controller'=>'Users','action' => 'search']]); ?>
                   <div class="col">
-                      <?= $this->Form->input('search',['placeholder'=>'search...','class'=>"form-control w-100",'label'=>false]); ?>
+                      <?= $this->Form->control('search',['placeholder'=>'search...','class'=>"form-control w-100",'label'=>false]); ?>
                   </div>
               </div>
           </li>

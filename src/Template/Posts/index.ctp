@@ -9,12 +9,12 @@ $check_like = 0;
 <h1>
     Mainpage
 </h1>
-<?= $this->Form->create("Post", ['type' => 'file','action' =>'add']); ?>
+<?= $this->Form->create('Posts', ['type' => 'file','url' =>['controller' => 'Posts','action' =>'add']]); ?>
 <div class="form-group">
-    <?= $this->Form->input('content',['rows'=>'5','class'=>"form-control"]); ?>
+    <?= $this->Form->control('content',['rows'=>'5','class'=>"form-control"]); ?>
 </div>
 <div class="form-group">
-    <?= $this->Form->input('image',['type' => "file",'class'=>"form-control"]); ?>
+    <?= $this->Form->control('image',['type' => "file",'class'=>"form-control"]); ?>
 </div>
     <?= $this->Form->button('Add',["class"=>"btn btn-primary mb-5"]); ?>
     <?php if(isset($content)) :?>

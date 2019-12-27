@@ -10,7 +10,7 @@ class PostsController extends AppController
 {
     public function index()
     {
-        if (!$this->request->session()->check('userinfo')){
+        if (!$this->request->getSession()->check('userinfo')){
             // return $this->redirect(['controller' => 'Users','action' => 'login']);
         }
         if (!isset($_GET['page_id'])){

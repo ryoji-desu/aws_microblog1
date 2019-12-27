@@ -27,12 +27,12 @@ class UsersController extends AppController
                 if ($user['status'] === 0) {
                     $this->Flash->error('your account has not activated yet, please activate it');
                 }else {
-                    //if ($user) {
-                    //    $this->Auth->setUser($user);
-                    //    $this->request->session()->write('userinfo', $user);
-                    //    $this->Flash->success('Login Success');
-                    //    return $this->redirect($this->Auth->redirectUrl());
-                    //}
+                    if ($user) {
+                        $this->Auth->setUser($user);
+                        $this->request->getSession()->write('userinfo', $user);
+                        $this->Flash->success('Login Success');
+                        return $this->redirect($this->Auth->redirectUrl());
+                    }
                     $this->Flash->error('your username or password is not correct');
                 }
             }
@@ -42,7 +42,7 @@ class UsersController extends AppController
     public function logout()
     {
         $this->Flash->success('logout');
-        $this->request->session()->destroy();
+        $this->request->getSession()->destroy();
         return $this->redirect($this->Auth->logout());
     }
 
