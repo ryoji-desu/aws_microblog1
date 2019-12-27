@@ -8,25 +8,25 @@ $this->assign('title','register');
             'url' =>['controller' => 'Users', 'action' => 'add']
         ]); ?>
         <div class="form-group">
-            <?= $this->Form->input('username',['class'=>"form-control w-50",'placeholder'=>'username(more than 4 characters,less than 8)']); ?>
+            <?= $this->Form->control('username',['class'=>"form-control w-50",'placeholder'=>'username(more than 4 characters,less than 8)']); ?>
             <?php if(isset($username)) :?>
                 <div class="mb-3 text-danger"><?= h($username) ;?></div>
             <?php endif ;?>
         </div>
         <div class="form-group">
-            <?= $this->Form->input('email',['class'=>"form-control w-50",'placeholder'=>'email']); ?>
+            <?= $this->Form->control('email',['class'=>"form-control w-50",'placeholder'=>'email']); ?>
             <?php if(isset($email)) :?>
                 <div class="mb-3 text-danger"><?= h($email) ;?></div>
             <?php endif ;?>
         </div>
         <div class="form-group">
-            <?= $this->Form->input('password',['class'=>"form-control w-50",'placeholder'=>'password(more than 4 characters,less than 8)']); ?>
+            <?= $this->Form->control('password',['class'=>"form-control w-50",'placeholder'=>'password(more than 4 characters,less than 8)']); ?>
             <?php if(isset($password)) :?>
                 <div class="mb-3 text-danger"><?= h($password) ;?></div>
             <?php endif ;?>
         </div>
         <div class="form-group">
-            <?= $this->Form->input('password_confirm',array(
+            <?= $this->Form->control('password_confirm',array(
                 'type' => 'password','class'=>"form-control w-50",'placeholder'=>'password-cofirm(more than 4 characters,less than 8)'
             )); ?>
             <?php if(isset($password_confirm)) :?>

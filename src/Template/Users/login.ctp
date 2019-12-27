@@ -3,15 +3,15 @@ $this->assign('title','login');
 ?>
 <div class = "container">
     <h1>Login</h1>
-        <?= $this->Form->create('User',['action' =>'/login']); ?>
+        <?= $this->Form->create(null,['url' =>['controller' =>'Users', 'action' =>'login']]); ?>
     <div class="form-group">
-        <?= $this->Form->input('username',['placeholder'=>'username','class'=>"form-control w-50"]); ?>
+        <?= $this->Form->control('username',['placeholder'=>'username','class'=>"form-control w-50"]); ?>
     </div>
         <?php if(isset($username)) :?>
             <div class="mb-3 text-danger"><?= h($username) ;?></div>
         <?php endif ;?>
     <div class="form-group">
-        <?= $this->Form->input('password',['placeholder'=>'password','class'=>"form-control w-50"]); ?>
+        <?= $this->Form->control('password',['placeholder'=>'password','class'=>"form-control w-50"]); ?>
         <?php if(isset($password)) :?>
             <div class="mb-3 text-danger"><?= h($password) ;?></div>
         <?php endif ;?>
@@ -25,10 +25,4 @@ $this->assign('title','login');
         'action' => 'add'
         ]) ?>
     <br>
-
-
-<fb:login-button
-  scope="public_profile,email"
-  onlogin="checkLoginState();">
-</fb:login-button>
 </div>

@@ -9,13 +9,13 @@ class UsersController extends AppController
 {
     public function login()
     {
-        if ($this->request->session()->check('userinfo')){
+        if ($this->request->getSession()->check('userinfo')){
             return $this->redirect(['controller' => 'Posts','action' => 'index']);
         }
         if ($this->request->is('post')) {
             //validation
             $check = array();
-            $s = array('username',$this->request->data['username']);
+	    $s = array('username',$this->request->data['username']);
             $check[] = $this->validation_empty($s);
             $n = array('password',$this->request->data['password']);
             $check[] = $this->validation_empty($n);
@@ -27,12 +27,12 @@ class UsersController extends AppController
                 if ($user['status'] === 0) {
                     $this->Flash->error('your account has not activated yet, please activate it');
                 }else {
-                    if ($user) {
-                        $this->Auth->setUser($user);
-                        $this->request->session()->write('userinfo', $user);
-                        $this->Flash->success('Login Success');
-                        return $this->redirect($this->Auth->redirectUrl());
-                    }
+                    //if ($user) {
+                    //    $this->Auth->setUser($user);
+                    //    $this->request->session()->write('userinfo', $user);
+                    //    $this->Flash->success('Login Success');
+                    //    return $this->redirect($this->Auth->redirectUrl());
+                    //}
                     $this->Flash->error('your username or password is not correct');
                 }
             }
@@ -48,16 +48,16 @@ class UsersController extends AppController
 
     public function add()
     {
-        if ($this->request->session()->check('userinfo')){
+        if ($this->request->getSession()->check('userinfo')){
             return $this->redirect(['controller' => 'Posts','action' => 'index']);
         }
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
             //store data
-            $username = $this->request->data['username'];
-            $email = $this->request->data['email'];
-            $password = $this->request->data['password'];
-            $password_confirm = $this->request->data['password_confirm'];
+            $username = $this->request->getData['username'];
+            $email = $this->request->getData['email'];
+            $password = $this->request->getData['password'];
+            $password_confirm = $this->request->getDdata['password_confirm'];
             //validation
             $check = array();
             $s = array('username',$username);
