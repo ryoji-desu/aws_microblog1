@@ -17,7 +17,7 @@ $me = $this->request->getSession()->read('Auth.User');
             <?php if(isset($user['status']) && $user['status'] ==1) :?>
                 <p><?= $this->Form->button('unfollow',["class"=>"btn btn-success",'name'=>'unfollow','type'=>'button','id'=>$user['id'],'value'=>$user['id']]); ?></p>
             <?php elseif($user['username'] == $me['username']) :?>
-                <p><?= $this->Form->input("me",["type"=>"button",'id'=>'btn',"class"=>"btn"]); ?></p>
+                <p><?= $this->Form->control("me",["type"=>"button",'id'=>'btn',"class"=>"btn"]); ?></p>
             <?php else :?>
                 <p><?= $this->Form->button('follow',["class"=>"btn btn-primary",'id'=>$user['id'],'name'=>'follow','type'=>'button','value'=>$user['id']]); ?></p>
             <?php endif ;?>
