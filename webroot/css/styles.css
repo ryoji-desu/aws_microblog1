@@ -6,3 +6,14 @@ header {
     width: 100%;
     display: flex;
 }
+
+#profile {
+    border-radius: 50%;
+    width: 75px;
+    height: 75px;
+}
+#profile_big {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+}

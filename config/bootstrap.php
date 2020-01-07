@@ -146,7 +146,7 @@ if (!Configure::read('App.fullBaseUrl')) {
     }
     unset($httpHost, $s);
 }
-define('url','http:/microblog1/');
+define('url','http://ryoji2020.com/microblog1/');
 Cache::setConfig(Configure::consume('Cache'));
 ConnectionManager::setConfig(Configure::consume('Datasources'));
 TransportFactory::setConfig(Configure::consume('EmailTransport'));
