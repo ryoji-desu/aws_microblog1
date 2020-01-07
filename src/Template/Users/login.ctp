@@ -3,7 +3,7 @@ $this->assign('title','login');
 ?>
 <div class = "container">
     <h1>Login</h1>
-        <?= $this->Form->create(null,['url' =>['controller' =>'Users', 'action' =>'login']]); ?>
+        <?= $this->Form->create(null,['url' =>"/users/login"]); ?>
     <div class="form-group">
         <?= $this->Form->control('username',['placeholder'=>'username','class'=>"form-control w-50"]); ?>
     </div>

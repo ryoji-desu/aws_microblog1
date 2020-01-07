@@ -1,0 +1,8 @@
+header {
+    /* background: url(/../exercise/microblog1/webroot/img/bg.png);
+    background-size: cover; */
+    background-color: #4682b4;
+    height: calc(30px + 3vw);
+    width: 100%;
+    display: flex;
+}

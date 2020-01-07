@@ -54,10 +54,10 @@ class UsersController extends AppController
         $user = $this->Users->newEntity();
         if ($this->request->is('post')) {
             //store data
-            $username = $this->request->getData['username'];
-            $email = $this->request->getData['email'];
-            $password = $this->request->getData['password'];
-            $password_confirm = $this->request->getDdata['password_confirm'];
+            $username = $this->request->data('username');
+            $email = $this->request->data('email');
+            $password = $this->request->data('password');
+            $password_confirm = $this->request->data('password_confirm');
             //validation
             $check = array();
             $s = array('username',$username);

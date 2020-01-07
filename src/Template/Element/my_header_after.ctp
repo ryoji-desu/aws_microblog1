@@ -1,8 +1,6 @@
 <header>
-<div class="cover">
-    <div class="container">
       <nav class="navbar navbar-expand navbar-light">
-        <a href="<?= h(url) ?>posts/" class="navbar-brand">Microblog</a>
+	<a href="<?= h(url) ?>posts/" class="navbar-brand" style = "padding-left: 30px;color: white;text-decoration: none;"><h2>Microblog</h2></a>
         <ul class="navbar-nav mr-auto">
           <li class="nav-item"><a href="<?= h(url) ?>users/mypage" class="nav-link">mypage</a></li>
         </ul>
@@ -24,6 +22,4 @@
           <li class="nav-item"><div class="col"><a href="<?= h(url) ?>users/logout" class="nav-link">logout</a></div></li>
         </ul>
       </nav>
-    </div>
-</div>
 </header>
