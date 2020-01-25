@@ -32,7 +32,7 @@ $me = $this->request->getSession()->read('Auth.User');
         var array = {[name] : user_id};
         $.ajax({
            type:'post',
-           url:'/exercise/microblog1/follows/check',
+           url:'/microblog1/follows/check',
            headers: {
                'X-CSRF-Token': '<?= h($this->request->getParam('_csrfToken')); ?>'
            },

@@ -220,7 +220,7 @@ $check_like = 0;
         var array = {[name] : post_id};
         $.ajax({
            type:'post',
-           url:'http://localhost:8080/likes/check',
+           url:'http://ryoji2020.com/microblog1/likes/check',
            headers: {
                'X-CSRF-Token': '<?= h($this->request->getParam('_csrfToken')); ?>'
            },
