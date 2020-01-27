@@ -19,7 +19,10 @@ $this->assign('title','login');
     <div class= "mt-3">
         <?= $this->Form->button('login',["class"=>"btn btn-primary w-25"]); ?>
     </div>
-        <?= $this->Form->end(); ?>
+	<?= $this->Form->end(); ?>
+        <div calss="mt-3">
+            <button class ="btn w-25" style="background-color:#00acee;margin-top:15px; color:white;"onclick="location.href='twitter'">login by using twitter</button>
+        </div>
         <?php echo $this->Html->link('signup',[
         'controller' => 'Users',
         'action' => 'add'
