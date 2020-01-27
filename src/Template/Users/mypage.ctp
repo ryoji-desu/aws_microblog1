@@ -5,8 +5,10 @@ $me = $this->request->getSession()->read('Auth.User');
 <div class="card m-auto shadow" style="width: 40rem; height:15rem;">
     <div class="justify-content-center text-center">
         <div class="text-right"><h4><a href="<?= h(url) ?>users/edit">Edit profile</a></h4></div>
-        <?php if($me['profile_image'] !== null) :?>
+        <?php if($me['profile_image'] !== null && strpos($me['profile_image'],'http') === false) :?>
             <img src="/../../../<?= h($me['profile_image']) ?>" id ="profile_big"/>
+        <?php elseif((strpos($me['profile_image'],'http') !== false)) :?>
+            <img src="<?= h($me['profile_image']) ?>" id ="profile_big"/>
         <?php else :?>
             <img src="<?= h(url) ?>webroot/img/noprofile.jpg" style="height:75px;" id ="profile_big">
         <?php endif ; ?>

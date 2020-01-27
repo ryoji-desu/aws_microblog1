@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Controller;
+require '/var/www/html/microblog1/vendor/twitteroauth/autoload.php';
+use Abraham\TwitterOAuth\TwitterOAuth;
 use Cake\Mailer\Email;
 use Cake\Utility\Security;
 use Cake\Routing\Router;
@@ -96,7 +98,66 @@ class UsersController extends AppController
         }
         $this->set('user',$user);
     }
+    public function twitter() {
+        $connection = new TwitterOAuth(Consumer_Key, Consumer_Secret);
+        $request_token = $connection->oauth("oauth/request_token", array("oauth_callback" => Callback));
+        //
+        //リクエストトークンはcallback.phpでも利用するのでセッションに保存する
+        $this->request->session()->write('oauth_token',$request_token['oauth_token']);
+        $this->request->session()->write('oauth_token_secret',$request_token['oauth_token_secret']);
 
+        $url = $connection->url("oauth/authorize", array("oauth_token" => $request_token['oauth_token']));
+        $this->autoRender = false;
+        $this->redirect($url);
+    }
+    private function twitter_login($user_info,$access_token)
+    {
+        $oauthToken = $access_token['oauth_token'];
+        $data['username'] = $user_info->name;
+        $data['profile_image'] = $user_info->profile_image_url_https;
+        $data['login_token'] = $oauthToken;
+        $data['status'] = 1;
+        $user = $this->Users->find()
+                              ->where(['login_token' => $oauthToken])
+                              ->toArray();
+        $result = count($user);
+        if ($result === 0) {
+            $user = $this->Users->newEntity();
+            $user = $this->Users->patchEntity($user,$data);
+            $this->Users->save($user);
+            $this->Auth->setUser($user);
+            $this->request->session()->write('userinfo', $user);
+            $this->Flash->success('welcome to microblog'.' '.$data['username']);
+            return $this->redirect($this->Auth->redirectUrl());
+        } else {
+            $this->Auth->setUser($user[0]);
+            $this->request->session()->write('userinfo', $user[0]);
+            $this->Flash->success('Login Success');
+            return $this->redirect($this->Auth->redirectUrl());
+        }
+    }
+    public function callback() {
+        $this->autoRender = false;
+        $oauth_token = $this->request->session()->read('oauth_token');
+        if($oauth_token == $_GET['oauth_token'] and $_GET['oauth_verifier']){
+
+        	//Twitterからアクセストークンを取得する
+        	$connection = new TwitterOAuth(Consumer_Key, Consumer_Secret, $_SESSION['oauth_token'], $_SESSION['oauth_token_secret']);
+        	$access_token = $connection->oauth('oauth/access_token', array('oauth_verifier' => $_GET['oauth_verifier'], 'oauth_token'=> $_GET['oauth_token']));
+
+        	//取得したアクセストークンでユーザ情報を取得
+        	$user_connection = new TwitterOAuth(Consumer_Key, Consumer_Secret, $access_token['oauth_token'], $access_token['oauth_token_secret']);
+        	$user_info = $user_connection->get('account/verify_credentials');
+
+            $this->twitter_login($user_info,$access_token);
+
+        }else{
+            $this->Flash->error('error happend, please try again');
+            $this->redirect(
+                ['controller' => 'Users', 'action' => 'login']
+            );
+        }
+    }
     public function activation($email,$hash)
     {
         $emailadress = $email;

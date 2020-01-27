@@ -34,7 +34,10 @@ $this->assign('title','register');
             <?php endif ;?>
         </div>
         <?= $this->Form->button('Add',["class"=>"btn btn-primary w-25"]); ?>
-        <?= $this->Form->end(); ?>
+	<?= $this->Form->end(); ?>
+        <div calss="mt-3">
+            <button class ="btn w-25" style="background-color:#00acee;margin-top:15px; color:white;"onclick="location.href='twitter'">signup by using twitter</button>
+        </div>
         <?php echo $this->Html->link('login',[
             'controller' => 'Users',
             'action' => 'login'

@@ -21,7 +21,7 @@ $this->assign('title','login');
     </div>
 	<?= $this->Form->end(); ?>
         <div calss="mt-3">
-            <button class ="btn w-25" style="background-color:#00acee;margin-top:15px; color:white;"onclick="location.href='twitter'">login by using twitter</button>
+            <button class ="btn w-25" style="background-color:#00acee;margin-top:15px; color:white;"onclick="twitter()">login by using twitter</button>
         </div>
         <?php echo $this->Html->link('signup',[
         'controller' => 'Users',
@@ -29,3 +29,8 @@ $this->assign('title','login');
         ]) ?>
     <br>
 </div>
+<script>
+function twitter() {
+    location.assign('/microblog1/users/twitter');
+}
+</script>

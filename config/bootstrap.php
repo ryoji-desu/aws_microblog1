@@ -191,7 +191,12 @@ Type::build('datetime')
     ->useImmutable();
 Type::build('timestamp')
     ->useImmutable();
+//api for twitter
+define("Consumer_Key", "0Ef7CyGu8FQxf4jhpAobZ7y8s");
+define("Consumer_Secret", "MM9L9DJoZKkSH3zicU1vNFEzxHIDXfzkxUKAIqmQXbgUM6fxDW");
 
+//Callback URL
+define('Callback', 'http://ryoji2020.com/microblog1/users/callback');
 /*
  * Custom Inflector rules, can be set to correctly pluralize or singularize
  * table, model, controller names or whatever other string is passed to the
