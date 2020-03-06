@@ -185,7 +185,7 @@ class UsersController extends AppController
                     'username' => 'Users.username',
                     'image' => 'Users.profile_image',
                     'status' => 'f.status'
-                ])->where(['Users.username LIKE' =>"%$data%",'Users.status'=>1]);
+                ])->where(['Users.username  LIKE' =>"%$data%",'Users.status'=>1]);
             $countUser = $users->count();
             $this->set('countUser',$countUser);
             $this->set('users',$users);
@@ -263,7 +263,7 @@ class UsersController extends AppController
         $this->loadModel('Posts');
         $searchedPosts = $this->Posts->find()
                         ->select(['username'=>'u.username','profile'=>'u.profile_image','Posts.content','Posts.image_path','orginal_content'=>'pr.content','original_image'=>'pr.image_path','orgiginal_user'=>'ur.username','original_profile'=>'ur.profile_image','original_delted'=>'pr.deleted','original_id'=>'pr.id'])
-                        ->where(['Posts.content LIKE' => "%$data%",'Posts.deleted is'=>null])
+                        ->where(['Posts.content  LIKE' => "%$data%",'Posts.deleted is'=>null])
                         ->join([
                             'table' => 'users',
                             'alias' => 'u',
@@ -318,7 +318,7 @@ class UsersController extends AppController
         if ($hisPosts !== null) {
             $count = $hisPosts->count();
         } else {
-            $count = 0;
+     	    $count = 0;
         }
         $hisInfo = $this->Users->find()
                 ->where(['user_id'=>$hisId]);
