@@ -27,10 +27,10 @@ $check_like = 0;
         <?php foreach ($posts as $post) :?>
             <div class="card m-auto shadow" style="width: 50rem;">
                 <div class="align-self-start  d-flex">
-        <?php if($me['profile_image'] !== null && strpos($me['profile_image'],'http') === false) :?>
-            <img src="/../../../<?= h($me['profile_image']) ?>" id ="profile_big"/>
-        <?php elseif((strpos($me['profile_image'],'http') !== false)) :?>
-            <img src="<?= h($me['profile_image']) ?>" id ="profile_big"/>
+       			                    <?php if($post->profile !== null && strpos($post->profile,'http') === false) :?>
+                        <img src="/../../../<?= h($post->profile) ?>" id ="profile_big"/>
+                    <?php elseif((strpos($post->profile,'http') !== false)) :?>
+                        <img src="<?= h($post->profile) ?>" id ="profile_big"/>
                     <?php else :?>
                         <div class=""><img src="<?= h(url) ?>webroot/img/noprofile.jpg" style="height:75px;" id ="profile"></div>
                     <?php endif ; ?>
